@@ -1,0 +1,13 @@
+package com.qfedu.house.persistence.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.qfedu.house.domain.User;
+import com.qfedu.house.persistence.BaseDaoHibernateAdapter;
+import com.qfedu.house.persistence.UserDAO;
+
+@Repository
+public class UserDAOImpl 
+		extends BaseDaoHibernateAdapter<User, Integer> 
+		implements UserDAO {
+}

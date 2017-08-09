@@ -1,0 +1,28 @@
+package com.qfedu.house.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qfedu.house.domain.User;
+import com.qfedu.house.persistence.UserDAO;
+import com.qfedu.house.service.UserService;
+
+@Service
+@Transactional
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserDAO userDAO;
+	
+	@Override
+	public boolean login(User user) {
+		return false;
+	}
+
+	@Override
+	public boolean register(User user) {
+		return false;
+	}
+
+}

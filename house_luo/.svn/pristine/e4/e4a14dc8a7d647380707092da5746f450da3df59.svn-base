@@ -11,11 +11,11 @@
 
 	<!-- where to find your controller class -->
 	<context:component-scan base-package="com.qfedu.house.controller" />
-	
+
 	<!-- how to deal with static resources -->
 	<mvc:default-servlet-handler />
-	<!-- <mvc:resources location="/WEB-INF/css/*" mapping="/css/*"></mvc:resources> -->
-	<!-- annotation based mvc configuration 配置消息转换器,如果不是默认必须手动加上json和string的-->
+
+	<!-- annotation based mvc configuration -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
@@ -25,7 +25,6 @@
 	</mvc:annotation-driven>
 
 	<!-- view resolver for newly Thymeleaf template engine -->
-	<!-- 模板解析器 -->
 	<bean id="templateResolver"
 		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
 		<property name="prefix" value="/WEB-INF/templates/" />
@@ -34,21 +33,21 @@
 		<property name="cacheable" value="true" />
 		<property name="characterEncoding" value="utf-8" />
 	</bean>
-	<!-- 模板引擎 -->
+
 	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
 		<property name="enableSpringELCompiler" value="true" />
 	</bean>
-	<!-- 视图解析器 -->
+
 	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
 		<property name="contentType" value="text/html;charset=utf-8" />
 		<property name="order" value="2" />
 	</bean>
-	<!--1. 配置命名解析器,设置优先级最高 -->
+	
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="1" />
 	</bean>
-	<!--2. 和controller对应和自定义的视图对应 -->
+
 	<bean id="distExcel" class="com.qfedu.house.view.DistrictExcelView" />
 </beans>

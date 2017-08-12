@@ -45,10 +45,10 @@
 		<property name="contentType" value="text/html;charset=utf-8" />
 		<property name="order" value="2" />
 	</bean>
-	<!--1. 配置命名解析器,设置优先级最高 -->
+	
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="1" />
 	</bean>
-	<!--2. 和controller对应和自定义的视图对应 -->
+
 	<bean id="distExcel" class="com.qfedu.house.view.DistrictExcelView" />
 </beans>

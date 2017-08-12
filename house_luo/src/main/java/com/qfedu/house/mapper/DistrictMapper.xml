@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.house.mapper.DistrictMapper">
+
+	<resultMap type="Province" id="ProvinceResult">
+		<id property="id" column="provid" />
+		<result property="name" column="provname" />
+	</resultMap>
+
+	<resultMap type="City" id="CityResult">
+		<id property="id" column="cityid" />
+		<result property="name" column="cityname" />
+		<association property="province" resultMap="ProvinceResult" />
+	</resultMap>
+
+	<resultMap type="District" id="DistrictResult">
+		<id property="id" column="distid" />
+		<result property="name" column="distname"/>
+		<association property="city" resultMap="CityResult" />
+	</resultMap>
+	
+	<select id="findAll" resultMap="DistrictResult">
+		select provid, provname, cityid, cityname, distid, distname
+		from tb_province 
+		left outer join tb_city on prov_id=provid
+		left outer join tb_district on city_id=cityid;
+	</select>
+	
+</mapper>

@@ -46,12 +46,9 @@
 		<property name="order" value="2" />
 	</bean>
 	<!--1. 配置命名解析器,设置优先级最高 -->
-	<!-- 1. BeanNameViewResolver -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="1" />
 	</bean>
 	<!--2. 和controller对应和自定义的视图对应 -->
-	<!-- 2. Custom View -->
 	<bean id="distExcel" class="com.qfedu.house.view.DistrictExcelView" />
-	<bean id="distPdf" class="com.qfedu.house.view.DistrictPdfView" />
 </beans>

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.view.document.AbstractXlsView;
 import com.qfedu.house.domain.District;
 //3.自定义视图,继承AbstractxlsView或者AbstractxlsxView(2007及更高版)
 //如果用新的要加新的API
-// 3. Create custom view from AbstractXlsView or AbstractXlsxView
 public class DistrictExcelView extends AbstractXlsView {
 
 	@Override
@@ -27,11 +26,7 @@ public class DistrictExcelView extends AbstractXlsView {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//用URLEncoder.encode("爷给你的表格.xls", "utf-8")来处理中文设置表名和格式
 		String fname = URLEncoder.encode("爷给你的表格.xls", "utf-8");
-
 		//请求头设置是内联打开(inline)还是附件下载(attachment),filename有中文的话要处理成百分号编码(percentage encode)
-	// case 1: inline / attachment
-		// case 2: filename --- percentage encoding --- URLEncoder.encode
-
 		response.setHeader("Content-Disposition", "attachment; filename=" + fname);
 		//旧版和新版的格式不一样
 		HSSFWorkbook book = (HSSFWorkbook) workbook;
@@ -49,11 +44,7 @@ public class DistrictExcelView extends AbstractXlsView {
 			HSSFRow infoRow = sheet.createRow(rowIndex);
 			for (int i = 0; i < propNames.length; ++i) {
 				HSSFCell infoCell = infoRow.createCell(i);
-
 				//通过反射取属性get property useing reflection
-
-				// get property using reflection / introspectation
-
 				infoCell.setCellValue(BeanUtils.getProperty(district, propNames[i]));
 			}
 			rowIndex += 1;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<defaultCache overflowToDisk="true" eternal="false" />
+	<diskStore path="java.io.tempdir" />
+	<cache name="zone1" 
+		overflowToDisk="true" 
+		eternal="false"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="600" 
+		maxElementsInMemory="1000"
+		diskPersistent="true" 
+		diskExpiryThreadIntervalSeconds="300"
+		memoryStoreEvictionPolicy="LRU" />
+</ehcache>
